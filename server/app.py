@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify, make_response
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from config import Config
@@ -13,6 +13,23 @@ from models import Book
 @app.route('/')
 def hello():
     return 'Hello, World!'
+
+@app.route('/books', methods=['GET'])
+def book():
+    books = Book.query.all()
+    all_books = []
+
+    for book in books:
+        book_dict = {
+            "id" : book.id,
+            "title": book.title,
+            "author": book.author,
+            "pages": book.pages,
+            "published": book.published
+        }
+
+        response = make_response(jsonify(book_dict), 200)
+        return response
 
 if __name__ == '__main__':
     app.run()
