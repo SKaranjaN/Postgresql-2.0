@@ -27,8 +27,9 @@ def book():
             "pages": book.pages,
             "published": book.published
         }
+        all_books.append(book_dict)
 
-        response = make_response(jsonify(book_dict), 200)
+        response = make_response(jsonify(all_books), 200)
         return response
 
 if __name__ == '__main__':
