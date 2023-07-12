@@ -21,7 +21,7 @@ def book():
 
     for book in books:
         book_dict = {
-            "id" : book.id,
+            "id": book.id,
             "title": book.title,
             "author": book.author,
             "pages": book.pages,
@@ -29,8 +29,8 @@ def book():
         }
         all_books.append(book_dict)
 
-        response = make_response(jsonify(all_books), 200)
-        return response
+    response = make_response(jsonify(all_books), 200)
+    return response
 
 if __name__ == '__main__':
     app.run()
