@@ -8,7 +8,7 @@ app.config.from_object(Config)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
-from models import Book  # Import models here to avoid circular import
+from models import Book  
 
 @app.route('/')
 def hello():
